@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Café Nebulosa{% endblock %}</title>
+  <style>
+    :root { --cafe:#3B2418; --crema:#FBF6EF; --acento:#C8763A; --texto:#2A1C14; --tenue:#7A6658; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Georgia, "Times New Roman", serif; background: var(--crema); color: var(--texto); line-height:1.6; }
+    header { background: var(--cafe); color:#fff; padding: 1rem 2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    header a { color:#F3D9C0; text-decoration:none; margin-left:1.2rem; font-family: Arial, sans-serif; }
+    header .marca { font-size:1.4rem; margin:0; color:#fff; font-weight:bold; }
+    main { max-width: 860px; margin: 0 auto; padding: 2rem; }
+    h1, h2 { color: var(--cafe); }
+    .caja { background:#fff; border:1px solid #E7D9C9; border-radius:10px; padding:1.4rem; margin-bottom:1.2rem; }
+    .boton { background: var(--acento); color:#fff; border:0; border-radius:6px; padding:.6rem 1.2rem; font-size:1rem; cursor:pointer; }
+    input { padding:.55rem; border:1px solid #CDB8A3; border-radius:6px; font-size:1rem; width:100%; margin:.3rem 0 .9rem; }
+    .flag { font-family: Consolas, monospace; background:#0D1117; color:#00FF9C; padding:.8rem 1rem; border-radius:8px; display:inline-block; }
+    .error { color:#B3261E; }
+    .tenue { color: var(--tenue); font-size:.9rem; }
+    footer { text-align:center; color:var(--tenue); font-family: Arial, sans-serif; font-size:.85rem; padding:2rem; }
+    footer a { color: var(--tenue); }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="marca" href="/" style="margin:0">☕ Café Nebulosa</a>
+    <nav>
+      <a href="/menu">Menú</a><a href="/blog">Blog</a><a href="/contacto">Contacto</a>
+      <a href="/perfil">Mi perfil</a><a href="/empleados">Empleados</a>
+    </nav>
+  </header>
+  {% if sin_token %}
+  <div style="background:#B3261E;color:#fff;padding:.7rem 2rem;font-family:Arial,sans-serif">
+    ⚠ Laboratorio sin <b>LAB_TOKEN</b>: las flags de esta web no serán aceptadas en la plataforma.
+    Copia tu token en el archivo <code>.env</code> y ejecuta <code>docker compose up -d</code>.
+  </div>
+  {% endif %}
+  <main>{% block contenido %}{% endblock %}</main>
+  <footer>
+    Café Nebulosa es un negocio ficticio creado para el laboratorio CTF Ciclo 1 · <a href="/archivo/">Archivo histórico</a>
+  </footer>
+</body>
+</html>

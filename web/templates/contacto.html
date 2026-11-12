@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %}Contacto · Café Nebulosa{% endblock %}
+{% block contenido %}
+{% if antiguo %}
+<p class="tenue" style="background:#FFF3CD;padding:.6rem 1rem;border-radius:6px">
+  📼 Estás viendo una copia archivada de esta página. <a href="/archivo/">Volver al archivo</a></p>
+{% endif %}
+<div class="caja">
+  <h1>Contacto</h1>
+  <p>📍 Av. Ficticia 123, Ciudad Laboratorio</p>
+  <p>✉️ hola@cafenebulosa.test</p>
+  <p>📞 (01) 000-0000</p>
+  {% if flag %}
+  <h2>Datos para el personal</h2>
+  <p>Wi-Fi interno: Nebulosa_Staff</p>
+  <p>Código interno de proveedores: <span class="flag">{{ flag }}</span></p>
+  {% endif %}
+</div>
+{% endblock %}

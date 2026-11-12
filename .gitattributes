@@ -1,0 +1,6 @@
+# Los scripts se ejecutan dentro de contenedores Linux: siempre con fin de
+# línea LF, aunque se clone en Windows (core.autocrlf=true).
+* text=auto eol=lf
+*.jpg binary
+*.png binary
+*.pcap binary

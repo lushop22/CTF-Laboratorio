@@ -1,0 +1,52 @@
+# Laboratorio CTF Ciclo 1 — LABORATORIO PERSONAL DEL ESTUDIANTE
+#
+#   1. Regístrate en la plataforma del curso y copia tu token.
+#   2. cp .env.example .env   y pon tu token en LAB_TOKEN
+#   3. docker compose up -d --build
+#
+#   Web vulnerable "Café Nebulosa"  → http://localhost:8080
+#   Descargas de archivos de retos  → http://localhost:8081
+#   ctf-kit (terminal con herramientas):
+#       docker exec -it ctf-kit bash
+#       ssh ctf@localhost -p 2222          (contraseña: SSH_PASSWORD)
+#
+# Las flags se generan al arrancar a partir de LAB_TOKEN: no están en el repo.
+# Las flags se envían en la plataforma del curso (te la indica tu docente).
+
+name: ctf-ciclo1
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    container_name: ctf-web
+    restart: unless-stopped
+    ports:
+      - "${PUERTO_WEB:-8080}:8080"
+    environment:
+      LAB_TOKEN: ${LAB_TOKEN:-}
+    networks: [ctf]
+
+  kit:
+    build:
+      context: .
+      dockerfile: kit/Dockerfile
+    container_name: ctf-kit
+    hostname: lab
+    restart: unless-stopped
+    ports:
+      - "${PUERTO_SSH:-2222}:22"
+      - "${PUERTO_DESCARGAS:-8081}:8081"
+    environment:
+      LAB_TOKEN: ${LAB_TOKEN:-}
+      SSH_PASSWORD: ${SSH_PASSWORD:-ctf2026}
+    healthcheck:
+      test: ["CMD", "test", "-f", "/var/lib/ctf/listo"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+    networks: [ctf]
+
+networks:
+  ctf:

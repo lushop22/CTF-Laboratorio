@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block titulo %}Blog · Café Nebulosa{% endblock %}
+{% block contenido %}
+<h1>Blog del barista</h1>
+{% for p in posts|reverse %}
+<div class="caja">
+  <h2><a href="/blog/{{ p.id }}">{{ p.titulo }}</a></h2>
+  <p class="tenue">{{ p.fecha }} · por Marco Tello</p>
+  <p>{{ p.texto[:110] }}…</p>
+</div>
+{% endfor %}
+{% endblock %}

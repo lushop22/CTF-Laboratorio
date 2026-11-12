@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block titulo %}{{ post.titulo }} · Café Nebulosa{% endblock %}
+{% block contenido %}
+<div class="caja">
+  <h1>{{ post.titulo }}</h1>
+  <p class="tenue">{{ post.fecha }}</p>
+  <p>{{ post.texto }}</p>
+  <hr>
+  <p class="tenue">Escrito por Marco Tello, barista jefe · usuario: <b>mtello</b> ·
+     ¿Olvidaste tu contraseña de empleado? <a href="/recuperar">Recupérala aquí</a></p>
+</div>
+<p><a href="/blog">← Volver al blog</a></p>
+{% endblock %}

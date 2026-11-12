@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block titulo %}Mi perfil · Café Nebulosa{% endblock %}
+{% block contenido %}
+<div class="caja">
+  <h1>Mi perfil</h1>
+  <p>Rol actual: <b>{{ rol }}</b></p>
+  {% if flag %}
+    <h2>Panel de administración</h2>
+    <p>Bienvenido, administrador. Ventas del día: S/ 1 284.50</p>
+    <p class="flag">{{ flag }}</p>
+  {% else %}
+    <p>Tienes 120 puntos de cliente frecuente. ☕</p>
+    <p class="tenue">Solo el rol <b>admin</b> puede ver el panel de administración.</p>
+  {% endif %}
+</div>
+{% endblock %}

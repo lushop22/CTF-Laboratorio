@@ -1,0 +1,235 @@
+{
+  "evento": "CTF Ciclo 1",
+  "formato_flag": "CICLO1{...}  (cada estudiante tiene flags propias, derivadas de su token)",
+  "categorias": [
+    "Linux",
+    "Criptografía",
+    "Web",
+    "Forense",
+    "OSINT",
+    "Reversing"
+  ],
+  "retos": [
+    {
+      "id": "linux_bienvenida",
+      "categoria": "Linux",
+      "nombre": "Bienvenida",
+      "puntos": 50,
+      "descripcion": "Conéctate al ctf-kit y entra a la carpeta de retos de Linux. Tu primera flag te está esperando en un archivo de texto.",
+      "ubicacion": "ctf-kit → ~/retos/linux/01_bienvenida/",
+      "pista": "Usa cd para moverte y cat para leer un archivo.",
+      "flag_base": "b13nv3n1d0_4l_ctf"
+    },
+    {
+      "id": "linux_ocultos",
+      "categoria": "Linux",
+      "nombre": "Lo que no se ve",
+      "puntos": 50,
+      "descripcion": "En esta carpeta parece que solo hay una nota sin importancia… ¿estás seguro de que viste TODO?",
+      "ubicacion": "ctf-kit → ~/retos/linux/02_ocultos/",
+      "pista": "En Linux los archivos que empiezan con punto están ocultos. Prueba ls -la.",
+      "flag_base": "l0s_0cult0s_t4mb13n_cu3nt4n"
+    },
+    {
+      "id": "linux_pajar",
+      "categoria": "Linux",
+      "nombre": "Aguja en el pajar",
+      "puntos": 100,
+      "descripcion": "Hay 600 archivos de registro en 30 carpetas. Solo uno contiene la flag. Abrirlos uno por uno no es una opción.",
+      "ubicacion": "ctf-kit → ~/retos/linux/03_pajar/",
+      "pista": "grep -r busca un texto dentro de todas las carpetas. ¿Qué texto tienen todas las flags?",
+      "flag_base": "gr3p_3s_tu_m3j0r_4m1g0"
+    },
+    {
+      "id": "linux_perdido",
+      "categoria": "Linux",
+      "nombre": "Perdido en el sistema",
+      "puntos": 100,
+      "descripcion": "Un administrador guardó un archivo llamado flag_perdida.txt en algún lugar del sistema y no recuerda dónde. Encuéntralo.",
+      "ubicacion": "ctf-kit → todo el sistema de archivos (lee ~/retos/linux/04_perdido/LEEME.txt)",
+      "pista": "find / -name \"flag_perdida*\" 2>/dev/null",
+      "flag_base": "f1nd_l0_3ncu3ntr4_t0d0"
+    },
+    {
+      "id": "cripto_base64",
+      "categoria": "Criptografía",
+      "nombre": "Primer contacto",
+      "puntos": 50,
+      "descripcion": "Interceptamos un mensaje que termina en '='. El remitente dice que está 'cifrado'. ¿Lo está de verdad?",
+      "ubicacion": "ctf-kit → ~/retos/cripto/01_base64/  ·  Descarga: {DESCARGAS}/cripto/01_base64/",
+      "pista": "echo 'texto' | base64 -d  — o la receta 'From Base64' de CyberChef.",
+      "flag_base": "b4s364_n0_3s_c1fr4d0"
+    },
+    {
+      "id": "cripto_hex",
+      "categoria": "Criptografía",
+      "nombre": "Solo números y letras de la a a la f",
+      "puntos": 50,
+      "descripcion": "Este mensaje solo usa los caracteres 0-9 y a-f, siempre en pares. ¿Qué será?",
+      "ubicacion": "ctf-kit → ~/retos/cripto/02_hex/  ·  Descarga: {DESCARGAS}/cripto/02_hex/",
+      "pista": "Hexadecimal. En Linux: xxd -r -p",
+      "flag_base": "h3x4d3c1m4l_s1n_m13d0"
+    },
+    {
+      "id": "cripto_cesar",
+      "categoria": "Criptografía",
+      "nombre": "El César perdió la cuenta",
+      "puntos": 100,
+      "descripcion": "Este texto tiene forma de flag, pero sus letras están desplazadas. No sabemos cuántas posiciones.",
+      "ubicacion": "ctf-kit → ~/retos/cripto/03_cesar/  ·  Descarga: {DESCARGAS}/cripto/03_cesar/",
+      "pista": "Solo hay 25 desplazamientos posibles. Busca el que convierta el inicio en CICLO1.",
+      "flag_base": "c3s4r_s3_r1nd3"
+    },
+    {
+      "id": "cripto_capas",
+      "categoria": "Criptografía",
+      "nombre": "Capa sobre capa",
+      "puntos": 150,
+      "descripcion": "Alguien codificó la flag varias veces seguidas. Quita las capas una a una hasta llegar al formato CICLO1{...}.",
+      "ubicacion": "ctf-kit → ~/retos/cripto/04_capas/  ·  Descarga: {DESCARGAS}/cripto/04_capas/",
+      "pista": "Son 3 capas: Base64 → Hex → Base64. La receta 'Magic' de CyberChef también ayuda.",
+      "flag_base": "c4p4_s0br3_c4p4"
+    },
+    {
+      "id": "cripto_huella",
+      "categoria": "Criptografía",
+      "nombre": "Huella digital",
+      "puntos": 150,
+      "descripcion": "Encontramos el hash de una contraseña y la lista de palabras que suele usar su dueño. La flag es CICLO1{contraseña}. La contraseña cambia para cada estudiante.",
+      "ubicacion": "ctf-kit → ~/retos/cripto/05_huella/  ·  Descarga: {DESCARGAS}/cripto/05_huella/",
+      "pista": "Cuenta los caracteres del hash para saber el algoritmo (64 = SHA-256). Luego calcula el hash de cada palabra y compáralo: while read p; do [ \"$(echo -n \"$p\" | sha256sum | cut -d' ' -f1)\" = \"$(cat hash.txt)\" ] && echo \"$p\"; done < palabras.txt",
+      "flag_base": "valquiria",
+      "tipo": "palabra"
+    },
+    {
+      "id": "web_comentarios",
+      "categoria": "Web",
+      "nombre": "Comentarios olvidados",
+      "puntos": 50,
+      "descripcion": "La página de inicio de Café Nebulosa se publicó con prisa. A veces los desarrolladores dejan notas donde no deberían.",
+      "ubicacion": "{WEB}/",
+      "pista": "Ctrl+U muestra el código fuente de la página.",
+      "flag_base": "c0m3nt4r10s_qu3_h4bl4n"
+    },
+    {
+      "id": "web_robots",
+      "categoria": "Web",
+      "nombre": "Los robots no deben entrar",
+      "puntos": 100,
+      "descripcion": "Café Nebulosa le pidió a los buscadores que no indexen cierta ruta. ¿Cuál será?",
+      "ubicacion": "{WEB}/",
+      "pista": "Hay un archivo estándar que los buscadores leen antes de indexar un sitio.",
+      "flag_base": "r0b0ts_n0_pr0t3g3_n4d4"
+    },
+    {
+      "id": "web_js",
+      "categoria": "Web",
+      "nombre": "Login de mentira",
+      "puntos": 100,
+      "descripcion": "El panel de empleados valida la contraseña… en tu propio navegador. Entra al panel.",
+      "ubicacion": "{WEB}/empleados",
+      "pista": "DevTools (F12) → pestaña Sources: revisa el archivo JavaScript del login.",
+      "flag_base": "j4v4scr1pt_3s_publ1c0"
+    },
+    {
+      "id": "web_cookie",
+      "categoria": "Web",
+      "nombre": "Galleta con permisos",
+      "puntos": 150,
+      "descripcion": "Tu perfil dice que eres un usuario normal. Solo el administrador ve la flag. ¿Cómo sabe la página quién eres?",
+      "ubicacion": "{WEB}/perfil",
+      "pista": "DevTools → Application → Cookies. El valor está en Base64: decodifica, cambia y vuelve a codificar.",
+      "flag_base": "c00k13s_m4n1pul4d4s"
+    },
+    {
+      "id": "forense_metadatos",
+      "categoria": "Forense",
+      "nombre": "La foto habla",
+      "puntos": 100,
+      "descripcion": "Una foto aparentemente normal. Pero las fotos guardan más información de la que se ve.",
+      "ubicacion": "ctf-kit → ~/retos/forense/01_metadatos/  ·  Descarga: {DESCARGAS}/forense/01_metadatos/",
+      "pista": "exiftool muestra los metadatos de una imagen.",
+      "flag_base": "m3t4d4t0s_h4bl4n"
+    },
+    {
+      "id": "forense_extension",
+      "categoria": "Forense",
+      "nombre": "Extensión mentirosa",
+      "puntos": 100,
+      "descripcion": "Nos enviaron foto_vacaciones.png, pero ningún visor de imágenes logra abrirla.",
+      "ubicacion": "ctf-kit → ~/retos/forense/02_extension/  ·  Descarga: {DESCARGAS}/forense/02_extension/",
+      "pista": "El comando file lee los magic bytes y te dice qué es realmente el archivo.",
+      "flag_base": "l4_f1rm4_n0_m13nt3"
+    },
+    {
+      "id": "forense_cebolla",
+      "categoria": "Forense",
+      "nombre": "Capas de cebolla",
+      "puntos": 150,
+      "descripcion": "Nuestro agente nos dejó esta imagen antes de desaparecer. Dijo que el secreto tenía 'varias capas'.",
+      "ubicacion": "ctf-kit → ~/retos/forense/03_cebolla/  ·  Descarga: {DESCARGAS}/forense/03_cebolla/",
+      "pista": "Orden: file → exiftool → steghide extract -sf → decodificar. Es el reto que resolvimos en clase.",
+      "flag_base": "h0l4_ctf"
+    },
+    {
+      "id": "forense_paisaje",
+      "categoria": "Forense",
+      "nombre": "Un paisaje muy pesado",
+      "puntos": 150,
+      "descripcion": "Esta imagen de un paisaje pesa más de lo normal. Parece que lleva algo pegado al final.",
+      "ubicacion": "ctf-kit → ~/retos/forense/04_paisaje/  ·  Descarga: {DESCARGAS}/forense/04_paisaje/",
+      "pista": "Trabaja en /tmp: copia la imagen y usa binwalk -e para extraer lo que tiene dentro.",
+      "flag_base": "b1nw4lk_l0_v3_t0d0"
+    },
+    {
+      "id": "forense_trafico",
+      "categoria": "Forense",
+      "nombre": "Tráfico sin cifrar",
+      "puntos": 150,
+      "descripcion": "Capturamos el tráfico de red de un empleado que subió archivos a un servidor. ¿Usó un protocolo seguro?",
+      "ubicacion": "ctf-kit → ~/retos/forense/05_trafico/  ·  Descarga: {DESCARGAS}/forense/05_trafico/",
+      "pista": "Abre el .pcap en Wireshark y filtra por ftp. En la terminal: tshark -r captura.pcap -Y ftp",
+      "flag_base": "n0_us3s_ftp"
+    },
+    {
+      "id": "osint_perfil",
+      "categoria": "OSINT",
+      "nombre": "Pregunta de seguridad",
+      "puntos": 100,
+      "descripcion": "Marco Tello, barista de Café Nebulosa (personaje ficticio), olvidó su contraseña. La recuperación pide el nombre de su primera mascota. Él mismo lo publicó en algún lugar.",
+      "ubicacion": "{WEB}/blog  y  {WEB}/recuperar",
+      "pista": "Lee todas las entradas del blog. Su usuario aparece al pie de cada entrada.",
+      "flag_base": "0s1nt_d3sd3_l0_publ1c0"
+    },
+    {
+      "id": "osint_archivo",
+      "categoria": "OSINT",
+      "nombre": "Internet no olvida",
+      "puntos": 100,
+      "descripcion": "La página de contacto actual de Café Nebulosa no tiene nada raro. Pero antes publicaban un 'código interno' que luego borraron.",
+      "ubicacion": "{WEB}/contacto",
+      "pista": "Busca la 'máquina del tiempo' del sitio: guarda versiones antiguas de sus páginas.",
+      "flag_base": "1nt3rn3t_n0_0lv1d4"
+    },
+    {
+      "id": "rev_cadenas",
+      "categoria": "Reversing",
+      "nombre": "Cadenas sueltas",
+      "puntos": 100,
+      "descripcion": "Este programa dice que no tiene secretos. Los programas guardan sus textos dentro del archivo.",
+      "ubicacion": "ctf-kit → ~/retos/reversing/01_cadenas/  ·  Descarga: {DESCARGAS}/reversing/01_cadenas/",
+      "pista": "strings programa | grep CICLO1",
+      "flag_base": "str1ngs_l0_v3_t0d0"
+    },
+    {
+      "id": "rev_login",
+      "categoria": "Reversing",
+      "nombre": "Login",
+      "puntos": 150,
+      "descripcion": "Este programa pide una clave y solo entonces muestra la flag. strings no revela la clave esta vez…",
+      "ubicacion": "ctf-kit → ~/retos/reversing/02_login/",
+      "pista": "ltrace ./login muestra las funciones que llama el programa, incluida la comparación de textos.",
+      "flag_base": "r3v3rs1ng_b4s1c0"
+    }
+  ]
+}

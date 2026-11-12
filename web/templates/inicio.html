@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block contenido %}
+<!-- TODO: quitar antes de pasar a producción. Nota para el equipo de desarrollo:
+     la flag de pruebas es {{ flag_comentario }} -->
+<div class="caja">
+  <h1>El café que te pone en órbita</h1>
+  <p>Granos de altura, tostado artesanal y el mejor espacio para estudiar en la ciudad.
+     Abrimos de lunes a sábado de 7:00 a 21:00.</p>
+  <p><a href="/menu">Ver el menú</a> · <a href="/blog">Leer nuestro blog</a></p>
+</div>
+<div class="caja">
+  <h2>¿Eres cliente frecuente?</h2>
+  <p>Revisa tus puntos y beneficios en <a href="/perfil">tu perfil</a>.</p>
+</div>
+<!-- Recordatorio: el panel interno no debe aparecer en buscadores. -->
+{% endblock %}

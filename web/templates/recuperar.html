@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titulo %}Recuperar contraseña · Café Nebulosa{% endblock %}
+{% block contenido %}
+<div class="caja">
+  <h1>Recuperar contraseña</h1>
+  <form method="post" autocomplete="off">
+    <label>Usuario<input name="usuario" required></label>
+    <label>Pregunta de seguridad: ¿Cómo se llamaba tu primera mascota?<input name="respuesta" required></label>
+    <button class="boton" type="submit">Recuperar</button>
+  </form>
+  {% if mensaje %}<p class="error">{{ mensaje }}</p>{% endif %}
+  {% if flag %}
+    <p>Identidad verificada. Lección: las preguntas de seguridad con respuestas públicas no protegen nada.</p>
+    <p class="flag">{{ flag }}</p>
+  {% endif %}
+</div>
+{% endblock %}

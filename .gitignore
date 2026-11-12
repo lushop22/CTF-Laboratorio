@@ -1,0 +1,4 @@
+# Configuración local: contiene tu token
+.env
+__pycache__/
+*.pyc

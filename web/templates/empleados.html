@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block titulo %}Empleados · Café Nebulosa{% endblock %}
+{% block contenido %}
+<div class="caja">
+  <h1>Acceso de empleados</h1>
+  <form id="form-login" autocomplete="off">
+    <label>Usuario<input id="usuario" required></label>
+    <label>Contraseña<input id="clave" type="password" required></label>
+    <button class="boton" type="submit">Ingresar</button>
+  </form>
+  <p id="resultado"></p>
+</div>
+<script src="/js/login.js"></script>
+{% endblock %}
